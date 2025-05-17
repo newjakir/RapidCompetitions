@@ -18,3 +18,17 @@ spec:
         image: newjakir/rapidcompetition-image:v1.0
         ports:
         - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rapidcompetition-service
+  namespace: production
+spec:
+  type: NodePort
+  selector:
+    app: rapidcompetition
+  ports:
+  - port: 8000
+    targetPort: 8000
+    nodePort: 30080
