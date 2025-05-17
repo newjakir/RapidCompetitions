@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rapidcompetition-deployment
+  namespace: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rapidcompetitions
+  template:
+    metadata:
+      labels:
+        app: rapidcompetitions
+    spec:
+      containers:
+      - name: rapidcompetition-container
+        image: newjakir/rapidcompetition-image:v1.0
+        ports:
+        - containerPort: 8000
